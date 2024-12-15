@@ -1,6 +1,7 @@
 <html lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <head>
     <title>TradeSink</title>
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
@@ -11,7 +12,7 @@
     <h1>TradeSink</h1>
     <div id="items" class="mt-4"></div>
     <script>
-        fetch('/items') // Replace with your actual API URL
+        fetch('/items')
             .then(response => response.json())
             .then(data => {
                 const itemsContainer = document.querySelector('#items');
