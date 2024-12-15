@@ -1,0 +1,40 @@
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>TradeSink</title>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <h1>TradeSink</h1>
+    <div id="items" class="mt-4"></div>
+    <script>
+        fetch('/items') // Replace with your actual API URL
+            .then(response => response.json())
+            .then(data => {
+                const itemsContainer = document.querySelector('#items');
+                if (!itemsContainer) {
+                    console.error('Element with ID #items not found');
+                    return;
+                }
+
+                if (typeof data === 'object') {
+                    itemsContainer.innerHTML = Object.keys(data).map(key => `
+                        <div class="p-4 border rounded-lg shadow-md mb-4">
+                            <h2 class="text-xl font-bold">${data[key].name} [${data[key].id}]</h2>
+                            <p class="text-gray-600">Required Level: ${data[key].required_level}</p>
+                            <p class="text-gray-600">Rarity: ${data[key].rarity.name}</p>
+                            <p class="text-gray-600">Item Type: ${data[key].item_type.name}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    console.error('Unexpected data format:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+
+</html>
