@@ -23,6 +23,7 @@ var items = map[int32]types.Item{
 		Rarity:        rarities[1],
 		ItemType:      item_types[1],
 		RequiredLevel: 10,
+		ImageURL:      "/static/img/wand02.webp",
 	},
 	2: {
 		Id:            2,
@@ -30,13 +31,15 @@ var items = map[int32]types.Item{
 		Rarity:        rarities[2],
 		ItemType:      item_types[1],
 		RequiredLevel: 25,
+		ImageURL:      "/static/img/wand03.webp",
 	},
 	3: {
 		Id:            3,
-		Name:          "Casters Desert Wand",
+		Name:          "Caster's Desert Wand",
 		Rarity:        rarities[3],
 		ItemType:      item_types[1],
 		RequiredLevel: 40,
+		ImageURL:      "/static/img/wand06.webp",
 	},
 	4: {
 		Id:            4,
@@ -44,6 +47,7 @@ var items = map[int32]types.Item{
 		Rarity:        rarities[4],
 		ItemType:      item_types[1],
 		RequiredLevel: 72,
+		ImageURL:      "/static/img/wand07.webp",
 	},
 }
 

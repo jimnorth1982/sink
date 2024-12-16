@@ -9,9 +9,8 @@ import (
 	"sink/items/types"
 )
 
-func GetAllItems(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(db.GetItems())
+func GetAllItems() map[int32]types.Item {
+	return db.GetItems()
 }
 
 func AddItem(w http.ResponseWriter, r *http.Request) {
