@@ -1,0 +1,8 @@
+{{ range . }}
+<div class="p-4 border rounded-lg shadow-md mb-4">
+    <h2 class="text-xl font-bold">{{.Name}} {{.Id}}</h2>
+    <p class="text-gray-600">Required Level: {{.RequiredLevel}}</p>
+    <p class="text-gray-600">Rarity: {{.Rarity.Name}}</p>
+    <p class="text-gray-600">Item Type: {{.ItemType.Name}}</p>
+</div>
+{{ end }}

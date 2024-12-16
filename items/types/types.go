@@ -13,7 +13,7 @@ type Rarity struct {
 type Item struct {
 	Id            int32    `json:"id"`
 	Name          string   `json:"name"`
+	RequiredLevel int      `json:"required_level"`
 	ItemType      ItemType `json:"item_type"`
 	Rarity        Rarity   `json:"rarity"`
-	RequiredLevel int      `json:"required_level"`
 }

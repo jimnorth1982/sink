@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>TradeSink</title>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    <link href="/css/output.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1 class="text-3xl font-bold">TradeSink</h1>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" hx-get="/items" hx-target="#items">Search Items</button>
+    <div id="items" class="mt-4"></div>
+</body>
+
+</html>

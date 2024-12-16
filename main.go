@@ -1,11 +1,16 @@
 package main
 
 import (
+	"html/template"
 	"net/http"
 	"sink/items/service"
+	"sink/items/types"
 )
 
+var itemsTemplate = template.Must(template.ParseFiles("templates/items.html"))
+
 func main() {
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.HandleFunc("/items", itemsHandler)
 	http.HandleFunc("/addItem", addItemHandler)
 	http.HandleFunc("/login", loginHandler)
@@ -14,15 +19,23 @@ func main() {
 }
 
 func itemsHandler(w http.ResponseWriter, r *http.Request) {
-	service.GetAllItems(w, r)
+	itemsMap := service.GetAllItems()
+	items := make([]types.Item, 0, len(itemsMap))
+	for _, item := range itemsMap {
+		items = append(items, item)
+	}
+	w.Header().Set("Content-Type", "text/html")
+	if err := itemsTemplate.Execute(w, items); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func addItemHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "static/index.html")
+	http.ServeFile(w, r, "templates/index.html")
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "static/index.html")
+	http.ServeFile(w, r, "templates/index.html")
 }
 
 func loginHandler(w http.ResponseWriter, r *http.Request) {
