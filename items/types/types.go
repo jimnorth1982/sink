@@ -16,4 +16,5 @@ type Item struct {
 	RequiredLevel int      `json:"required_level"`
 	ItemType      ItemType `json:"item_type"`
 	Rarity        Rarity   `json:"rarity"`
+	ImageURL      string   `json:"image_url"`
 }

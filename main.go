@@ -10,7 +10,8 @@ import (
 var itemsTemplate = template.Must(template.ParseFiles("templates/items.html"))
 
 func main() {
-	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.Handle("/static/css/", http.StripPrefix("/static/css/", http.FileServer(http.Dir("static/css"))))
+	http.Handle("/static/img/", http.StripPrefix("/static/img/", http.FileServer(http.Dir("static/img"))))
 	http.HandleFunc("/items", itemsHandler)
 	http.HandleFunc("/addItem", addItemHandler)
 	http.HandleFunc("/login", loginHandler)
